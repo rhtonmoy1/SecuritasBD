@@ -23,7 +23,7 @@ a {
 a:hover,
 a:active,
 a:focus {
-  color: #0a98c0;
+  color: #880000;
   outline: none;
   text-decoration: none;
 }
@@ -223,7 +223,7 @@ h6 {
   width: 100%;
   height: 100vh;
   position: relative;
-  background: linear-gradient(to bottom right, #f8f9fa, #c32733f5);
+  background: linear-gradient(to bottom right, #f8f9fa, #800020);
   /* background: linear-gradient(to bottom right, #ed7d31,#111d37 ); */
   background-size: cover;
 }
@@ -274,13 +274,13 @@ h6 {
   border-radius: 4px;
   transition: 0.5s;
   color: #fff;
-  background: #c32733;
+  background: #800020;
   color: #fff;
 }
 
 #intro .intro-info .btn-get-started:hover,
 #intro .intro-info .btn-services:hover {
-  background: #0a98c0;
+  background: #c32733;
 }
 
 /*--------------------------------------------------------------
@@ -322,7 +322,7 @@ h6 {
 .main-nav a:hover,
 .main-nav .active>a,
 .main-nav li:hover>a {
-  color: #c32733;
+  color: #800020;
   text-decoration: none;
 }
 
@@ -470,7 +470,7 @@ h6 {
 
 .mobile-nav-toggle i {
   margin: 18px 18px 0 0;
-  color: #065e77;
+  color: #800020;
 }
 
 .mobile-nav-overly {
@@ -541,7 +541,7 @@ h6 {
 }
 
 #about .about-content h2 {
-  color: #c32733;
+  color: #800020;
   font-family: "Montserrat", sans-serif;
   font-weight: 700;
 }
@@ -575,7 +575,7 @@ h6 {
 
 #about .about-img img {
   width: 100%;
-  border: 8px solid #fff;
+  border: 8px solid #ffffff;
   transition: .5s;
 }
 
@@ -593,7 +593,7 @@ h6 {
   height: 92%;
   z-index: -1;
   content: '';
-  background-color: #ebf1fa;
+  background-color: #800020;
   transition: .5s;
 }
 
@@ -605,7 +605,7 @@ h6 {
   height: 92%;
   z-index: -1;
   content: '';
-  background-color: #ebf1fa;
+  background-color: #800020;
   transition: .5s;
 }
 
@@ -1049,7 +1049,7 @@ h6 {
   bottom: 0; /* Position at the bottom of the member container */
   left: 0;
   right: 0;
-  background: linear-gradient(to bottom, rgba(255, 87, 34, 0), #ed7d31);
+  background: linear-gradient(to bottom, rgba(255, 87, 34, 0), #800020);
   color: #fff;
   padding: 15px;
   display: flex;
@@ -1359,7 +1359,7 @@ h6 {
 #footer .footer-top .social-links a {
   font-size: 18px;
   display: inline-block;
-  background: #c32733;
+  background: #880000;
   color: #fff;
   line-height: 1;
   padding: 8px 0;
@@ -1372,7 +1372,7 @@ h6 {
 }
 
 #footer .footer-top .social-links a:hover {
-  background: #0a98c0;
+  background: #c32733;
   color: #fff;
 }
 

@@ -1,115 +1,132 @@
 (function ($) {
-    "use strict";
+  "use strict";
 
-    // Spinner
-    var spinner = function () {
-        setTimeout(function () {
-            if ($('#spinner').length > 0) {
-                $('#spinner').removeClass('show');
-            }
-        }, 1);
-    };
-    spinner();
-    
-    
-    // Initiate the wowjs
-    new WOW().init();
+  // Preloader (if the #preloader div exists)
+  $(window).on('load', function () {
+    if ($('#preloader').length) {
+      $('#preloader').delay(100).fadeOut('slow', function () {
+        $(this).remove();
+      });
+    }
+  });
 
+  // Back to top button
+  $(window).scroll(function() {
+    if ($(this).scrollTop() > 100) {
+      $('.back-to-top').fadeIn('slow');
+    } else {
+      $('.back-to-top').fadeOut('slow');
+    }
+  });
+  $('.back-to-top').click(function(){
+    $('html, body').animate({scrollTop : 0},1500, 'easeInOutExpo');
+    return false;
+  });
 
-    // Fixed Navbar
-    $(window).scroll(function () {
-        if ($(window).width() < 992) {
-            if ($(this).scrollTop() > 45) {
-                $('.fixed-top').addClass('bg-white shadow');
-            } else {
-                $('.fixed-top').removeClass('bg-white shadow');
-            }
-        } else {
-            if ($(this).scrollTop() > 45) {
-                $('.fixed-top').addClass('bg-white shadow').css('top', -45);
-            } else {
-                $('.fixed-top').removeClass('bg-white shadow').css('top', 0);
-            }
+  // Initiate the wowjs animation library
+  new WOW().init();
+
+  // Header scroll class
+  $(window).scroll(function() {
+    if ($(this).scrollTop() > 100) {
+      $('#header').addClass('header-scrolled');
+    } else {
+      $('#header').removeClass('header-scrolled');
+    }
+  });
+
+  if ($(window).scrollTop() > 100) {
+    $('#header').addClass('header-scrolled');
+  }
+
+  // Smooth scroll for the navigation and links with .scrollto classes
+  $('.main-nav a, .mobile-nav a, .scrollto').on('click', function() {
+    if (location.pathname.replace(/^\//, '') == this.pathname.replace(/^\//, '') && location.hostname == this.hostname) {
+      var target = $(this.hash);
+      if (target.length) {
+        var top_space = 0;
+
+        if ($('#header').length) {
+          top_space = $('#header').outerHeight();
+
+          if (! $('#header').hasClass('header-scrolled')) {
+            top_space = top_space - 40;
+          }
         }
-    });
-    
-    
-    // Back to top button
-    $(window).scroll(function () {
-        if ($(this).scrollTop() > 300) {
-            $('.back-to-top').fadeIn('slow');
-        } else {
-            $('.back-to-top').fadeOut('slow');
+
+        $('html, body').animate({
+          scrollTop: target.offset().top - top_space
+        }, 1500, 'easeInOutExpo');
+
+        if ($(this).parents('.main-nav, .mobile-nav').length) {
+          $('.main-nav .active, .mobile-nav .active').removeClass('active');
+          $(this).closest('li').addClass('active');
         }
-    });
-    $('.back-to-top').click(function () {
-        $('html, body').animate({scrollTop: 0}, 1500, 'easeInOutExpo');
+
+        if ($('body').hasClass('mobile-nav-active')) {
+          $('body').removeClass('mobile-nav-active');
+          $('.mobile-nav-toggle i').toggleClass('fa-times fa-bars');
+          $('.mobile-nav-overly').fadeOut();
+        }
         return false;
+      }
+    }
+  });
+
+  // Navigation active state on scroll
+  var nav_sections = $('section');
+  var main_nav = $('.main-nav, .mobile-nav');
+  var main_nav_height = $('#header').outerHeight();
+
+  $(window).on('scroll', function () {
+    var cur_pos = $(this).scrollTop();
+  
+    nav_sections.each(function() {
+      var top = $(this).offset().top - main_nav_height,
+          bottom = top + $(this).outerHeight();
+  
+      if (cur_pos >= top && cur_pos <= bottom) {
+        main_nav.find('li').removeClass('active');
+        main_nav.find('a[href="#'+$(this).attr('id')+'"]').parent('li').addClass('active');
+      }
     });
+  });
 
+  // jQuery counterUp (used in Whu Us section)
+  $('[data-toggle="counter-up"]').counterUp({
+    delay: 10,
+    time: 1000
+  });
 
-    // Facts counter
-    $('[data-toggle="counter-up"]').counterUp({
-        delay: 10,
-        time: 2000
+  // Porfolio isotope and filter
+  $(window).on('load', function () {
+    var portfolioIsotope = $('.portfolio-container').isotope({
+      itemSelector: '.portfolio-item'
     });
-
-
-    // Project carousel
-    $(".project-carousel").owlCarousel({
-        autoplay: true,
-        smartSpeed: 1000,
-        margin: 25,
-        loop: true,
-        center: true,
-        dots: false,
-        nav: true,
-        navText : [
-            '<i class="bi bi-chevron-left"></i>',
-            '<i class="bi bi-chevron-right"></i>'
-        ],
-        responsive: {
-			0:{
-                items:1
-            },
-            576:{
-                items:1
-            },
-            768:{
-                items:2
-            },
-            992:{
-                items:3
-            }
-        }
+    $('#portfolio-flters li').on( 'click', function() {
+      $("#portfolio-flters li").removeClass('filter-active');
+      $(this).addClass('filter-active');
+  
+      portfolioIsotope.isotope({ filter: $(this).data('filter') });
     });
+  });
 
+  // Testimonials carousel (uses the Owl Carousel library)
+  $(".testimonials-carousel").owlCarousel({
+    autoplay: true,
+    dots: true,
+    loop: true,
+    items: 1
+  });
 
-    // Testimonials carousel
-    $(".testimonial-carousel").owlCarousel({
-        autoplay: true,
-        smartSpeed: 1000,
-        center: true,
-        margin: 24,
-        dots: true,
-        loop: true,
-        nav : false,
-        responsive: {
-            0:{
-                items:1
-            },
-			576:{
-                items:1
-            },
-            768:{
-                items:2
-            },
-            992:{
-                items:3
-            }
-        }
-    });
+  // Clients carousel (uses the Owl Carousel library)
+  $(".clients-carousel").owlCarousel({
+    autoplay: true,
+    dots: true,
+    loop: true,
+    responsive: { 0: { items: 2 }, 768: { items: 4 }, 900: { items: 6 }
+    }
+  });
 
-    
 })(jQuery);
 

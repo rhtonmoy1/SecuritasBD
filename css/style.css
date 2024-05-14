@@ -1034,70 +1034,72 @@ h6 {
 
 #team .member {
   text-align: center;
-  margin-bottom: 20px;
+  margin-bottom: 40px; /* Increased margin for better spacing */
   position: relative;
   overflow: hidden;
-  border: 1px solid #ccc;
-  background: #fff;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
   border-radius: 10px;
   transition: transform 0.3s;
-}
-
-#team .member .member-info {
-  position: absolute;
-  bottom: 0; /* Position at the bottom of the member container */
-  left: 0;
-  right: 0;
-  background: linear-gradient(to bottom, rgba(255, 87, 34, 0), #800020);
-  color: #fff;
-  padding: 15px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  opacity: 0;
-  height: auto;
-  transition: opacity 0.3s;
 }
 
 #team .member:hover {
   transform: scale(1.05);
 }
 
+#team .member-image {
+  border-radius: 50%;
+  overflow: hidden;
+  margin-bottom: 200px; /* Adjusted margin for better spacing */
+}
+
+#team .member img {
+  width: 300px;
+  height: 300px;
+  transition: transform 0.3s; /* Added transition for smooth effect */
+}
+
+#team .member:hover img {
+  transform: scale(1.1); /* Enlarge image on hover */
+}
+
+#team .member-info {
+  position: absolute;
+  bottom: -100%; /* Initially hide the info */
+  left: 0;
+  right: 0;
+  background: rgba(0, 0, 0, 0.8); /* Adjusted background color for better readability */
+  color: #fff;
+  padding: 20px;
+  transition: bottom 0.3s; /* Added transition for smooth reveal */
+}
+
 #team .member:hover .member-info {
-  opacity: 1;
+  bottom: 0; /* Reveal info on hover */
 }
 
 #team .member h4 {
   font-weight: 700;
   margin: 10px 0;
-  font-size: 20px;
-  color: #fff;
-  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5); /* Apply a hard shadow */
+  font-size: 22px; /* Adjusted font size for better readability */
 }
 
 #team .member span {
   font-style: italic;
-  font-size: 14px;
-  color: #fff;
-  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5); /* Apply a hard shadow */
+  font-size: 16px; /* Adjusted font size for better readability */
+  color: #ffd700; /* Changed color to gold for contrast */
 }
 
-#team .member .social {
-  margin-top: 15px;
+#team .member-info p {
+  display: none; /* Initially hide the paragraph */
 }
 
-#team .member .social a {
-  color: #000000;
-  font-size: 24px;
-  margin: 0 10px;
-  text-decoration: none;
+#team .member-info p.hidden {
+  display: block; /* Show the paragraph when revealed */
 }
 
-#team .member .social a:hover {
-  color: #1bb1dc;
+#team .member-info p {
+  margin-top: 20px; /* Add margin to separate paragraphs */
 }
+
 
 
 

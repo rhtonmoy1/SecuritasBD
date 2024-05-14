@@ -1033,8 +1033,9 @@ h6 {
 }
 
 #team .member {
+  padding: 20px;
   text-align: center;
-  margin-bottom: 40px; /* Increased margin for better spacing */
+  margin-bottom: 40px;
   position: relative;
   overflow: hidden;
   border-radius: 10px;
@@ -1046,58 +1047,61 @@ h6 {
 }
 
 #team .member-image {
+  width: 300px; /* Fixed width */
+  height: 300px; /* Fixed height */
   border-radius: 50%;
   overflow: hidden;
-  margin-bottom: 200px; /* Adjusted margin for better spacing */
+  margin: 0 auto 20px;
 }
 
 #team .member img {
-  width: 300px;
-  height: 300px;
-  transition: transform 0.3s; /* Added transition for smooth effect */
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.3s;
 }
 
 #team .member:hover img {
-  transform: scale(1.1); /* Enlarge image on hover */
+  transform: scale(1.1);
 }
 
 #team .member-info {
   position: absolute;
-  bottom: -100%; /* Initially hide the info */
+  bottom: -100%;
   left: 0;
   right: 0;
-  background: rgba(0, 0, 0, 0.8); /* Adjusted background color for better readability */
+  background: rgba(0, 0, 0, 0.8);
   color: #fff;
   padding: 20px;
-  transition: bottom 0.3s; /* Added transition for smooth reveal */
+  transition: bottom 0.3s;
 }
 
 #team .member:hover .member-info {
-  bottom: 0; /* Reveal info on hover */
+  bottom: 0;
 }
 
 #team .member h4 {
   font-weight: 700;
   margin: 10px 0;
-  font-size: 22px; /* Adjusted font size for better readability */
+  font-size: 22px;
 }
 
 #team .member span {
   font-style: italic;
-  font-size: 16px; /* Adjusted font size for better readability */
-  color: #ffd700; /* Changed color to gold for contrast */
+  font-size: 16px;
+  color: #ffd700;
 }
 
 #team .member-info p {
-  display: none; /* Initially hide the paragraph */
+  display: none;
 }
 
 #team .member-info p.hidden {
-  display: block; /* Show the paragraph when revealed */
+  display: block;
 }
 
 #team .member-info p {
-  margin-top: 20px; /* Add margin to separate paragraphs */
+  margin-top: 20px;
 }
 
 
